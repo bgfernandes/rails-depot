@@ -40,6 +40,6 @@ jobs:
 
       - name: Run Tests
         env:
-          DATABASE_URL: postgres://postgres:password@localhost/rails_depot_test
+          DATABASE_URL: postgres://postgres:password@127.0.0.1/rails_depot_test
         run:
           bin/rails test
