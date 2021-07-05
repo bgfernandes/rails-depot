@@ -58,5 +58,7 @@ jobs:
           #cache-version: # optional, default is 0
 
       - name: Run Tests
+        env:
+          DATABASE_URL: postgres://postgres:password@localhost/rails_depot_test
         run:
           bin/rails test
