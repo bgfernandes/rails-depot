@@ -1,13 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: BiggerMyString1
   description: MyText
-  image_url: MyString
+  image_url: bono.jpg
   price: 9.99
 
 two:
-  title: MyString
+  title: BiggerMyString2
   description: MyText
-  image_url: MyString
+  image_url: maria.jpg
   price: 9.99
+
+trakinas:
+  title: Cookie Trakinas
+  description:
+    This is some description for Trakinas
+  image_url: trakinas.jpg
+  price: 4.99
