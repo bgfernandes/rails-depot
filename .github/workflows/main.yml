@@ -1,0 +1,62 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build&test"
+  build&test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Setup PostgreSQL
+        # You may pin to the exact commit or the version.
+        # uses: Harmon758/postgresql-action@0be19fa37850b22cb4c9bbf28a03abbf44abd863
+        uses: Harmon758/postgresql-action@v1.0.0
+        # with:
+          # Version of PostgreSQL to use
+          # postgresql version: # optional, default is latest
+          # POSTGRES_DB - name for the default database that is created
+          # postgresql db: # optional, default is 
+          # POSTGRES_USER - create the specified user with superuser power
+          # postgresql user: # optional, default is 
+          # POSTGRES_PASSWORD - superuser password
+          # postgresql password: # optional, default is
+          
+      - name: Setup Ruby, JRuby and TruffleRuby
+        # You may pin to the exact commit or the version.
+        # uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
+        uses: ruby/setup-ruby@v1.75.0
+        with:
+          # Engine and version to use, see the syntax in the README. Reads from .ruby-version or .tool-versions if unset.
+          #ruby-version: # optional, default is default
+          # The version of Bundler to install. Either 'none', 'latest', 'Gemfile.lock', or a version number (e.g., 1, 2, 2.1.4).
+          #For 'Gemfile.lock', the version is determined based on the BUNDLED WITH section from the file Gemfile.lock, $BUNDLE_GEMFILE.lock or gems.locked.
+          #Defaults to 'Gemfile.lock' if the file exists and 'latest' otherwise.
+          #bundler: # optional, default is default
+          # Run "bundle install", and cache the result automatically. Either true or false.
+          bundler-cache: true # optional, default is false
+          # The working directory to use for resolving paths for .ruby-version, .tool-versions and Gemfile.lock.
+          #working-directory: # optional, default is .
+          # Arbitrary string that will be added to the cache key of the bundler cache. Set or change it if you need to invalidate the cache.
+          #cache-version: # optional, default is 0
+          
+      - name: Run Tests
+        run:
+          bin/rails test
