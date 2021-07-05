@@ -38,11 +38,19 @@ jobs:
           # Arbitrary string that will be added to the cache key of the bundler cache. Set or change it if you need to invalidate the cache.
           #cache-version: # optional, default is 0
 
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+
       - name: Setup DB
         env:
           DATABASE_URL: postgres://postgres:password@127.0.0.1/rails_depot_test
         run:
           bin/rails db:setup
+
+      - name: Yarn
+        run: |
+          sudo npm install -g yarn
+          yarn install
 
       - name: Run Tests
         env:
