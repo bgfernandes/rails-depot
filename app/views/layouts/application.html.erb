@@ -11,8 +11,24 @@
   </head>
 
   <body>
-    <main class='<%= controller.controller_name %>'>
-      <%= yield %>
-    </main>
+    <header class="main">
+      <span class="img_placeholder">IMG Placeholder</span>
+      <h1><%= @page_title %></h1>
+    </header>
+
+    <section class="content">
+      <nav class="side_nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <main class='<%= controller.controller_name %>'>
+        <%= yield %>
+      </main>
+    </section>
   </body>
 </html>
