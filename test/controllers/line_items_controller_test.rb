@@ -22,7 +22,18 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_select 'h2', 'Your Cart'
-    assert_select 'li', 'Cookie Trakinas'
+    assert_select 'li', "1 \u00D7 Cookie Trakinas"
+  end
+
+  test "should increase line_item quantity if product is already present in cart" do
+    assert_difference('LineItem.count', 1) do
+      post line_items_url, params: { product_id: products(:trakinas).id }
+      post line_items_url, params: { product_id: products(:trakinas).id }
+    end
+
+    follow_redirect!
+    assert_select 'h2', 'Your Cart'
+    assert_select 'li', "2 \u00D7 Cookie Trakinas"
   end
 
   test "should show line_item" do
