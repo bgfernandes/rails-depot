@@ -10,7 +10,8 @@ Tutorial application following the Agile Web Development with Rails 6 book.
 6. Copy `config/database.yml.example` to `config/database.yml` and update info needed to connect to your database.
 7. Run `bundle install` to install all ruby dependencies.
 8. Run `bin/rails db:setup` to setup the development database.
-9. Run `yarn install` to install the javascript dependencies.
+9. Run `bin/rails db:seed` to fill the DB with development data.
+10. Run `yarn install` to install the javascript dependencies.
 
 ## Running in development
 Run `bin/rails server` to start the server in development mode.
