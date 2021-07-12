@@ -1,0 +1,12 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h2>Your Cart</h2>
+
+<ul>
+  <% @cart.line_items.each do |line_item| %>
+    <li><%= line_item.product.title %></li>
+  <% end %>
+</ul>
+
