@@ -16,9 +16,5 @@ RSpec.describe Cart, type: :model do
     it "updates the product_price in line_item when adding the same product again" do
       expect(updated_line_item.product_price).to eq(updated_product.price)
     end
-
-    it "fails" do
-      expect(true).to eq(false)
-    end
   end
 end
