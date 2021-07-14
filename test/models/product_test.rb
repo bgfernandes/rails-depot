@@ -52,8 +52,10 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "product tite must be unique" do
+    existing_product = create(:product)
+
     product = Product.new(
-      title: products(:trakinas).title,
+      title: existing_product.title,
       description: 'some descritpion',
       price: 1,
       image_url: "trakinas.jpg"
