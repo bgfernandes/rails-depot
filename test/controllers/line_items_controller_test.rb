@@ -2,7 +2,7 @@ require "test_helper"
 
 class LineItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @line_item = line_items(:one)
+    @line_item = create(:line_item)
   end
 
   test "should get index" do
@@ -16,24 +16,28 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create line_item" do
+    product = create(:product)
+
     assert_difference('LineItem.count') do
-      post line_items_url, params: { product_id: products(:trakinas).id }
+      post line_items_url, params: { product_id: product.id }
     end
 
     follow_redirect!
     assert_select 'h2', 'Your Cart'
-    assert_select 'td', "Cookie Trakinas"
+    assert_select 'td', product.title
   end
 
   test "should increase line_item quantity if product is already present in cart" do
+    product = create(:product)
+
     assert_difference('LineItem.count', 1) do
-      post line_items_url, params: { product_id: products(:trakinas).id }
-      post line_items_url, params: { product_id: products(:trakinas).id }
+      post line_items_url, params: { product_id: product.id }
+      post line_items_url, params: { product_id: product.id }
     end
 
     follow_redirect!
     assert_select 'h2', 'Your Cart'
-    assert_select 'td', "Cookie Trakinas"
+    assert_select 'td', product.title
     assert_select 'td', "2"
   end
 

@@ -2,7 +2,7 @@ require "test_helper"
 
 class CartsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @cart = carts(:one)
+    @cart = create(:cart)
   end
 
   test "should get index" do
@@ -39,7 +39,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy cart" do
-    post line_items_url, params: { product_id: products(:trakinas).id }
+    post line_items_url, params: { product_id: create(:product).id }
 
     @cart = Cart.find(session[:cart_id])
 

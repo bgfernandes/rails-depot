@@ -5,4 +5,13 @@ FactoryBot.define do
     image_url { "trakinas.jpg" }
     price { 4.99 }
   end
+
+  factory :cart do
+  end
+
+  factory :line_item do
+    product
+    cart
+    product_price { 0 }
+  end
 end
