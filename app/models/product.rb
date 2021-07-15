@@ -2,7 +2,7 @@
 
 # A Product to be sold in the store
 class Product < ApplicationRecord
-  has_many :line_items
+  has_many :line_items, dependent: :restrict_with_error
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -18,9 +18,9 @@ class Product < ApplicationRecord
   private
 
   def ensure_not_referenced_by_any_line_item
-    unless line_items.empty?
-      errors.add(:base, 'Line items present')
-      throw :abort
-    end
+    return if line_items.empty?
+
+    errors.add(:base, 'Line items present')
+    throw :abort
   end
 end
