@@ -108,7 +108,9 @@ RSpec.describe Product, type: :model do
 
     it 'does not delete and adds an error' do
       expect { product_that_has_line_items.destroy }.to change(Cart, :count).by 0
-      expect(product_that_has_line_items.errors[:base]).to eq ['Cannot delete record because dependent line items exist']
+      expect(product_that_has_line_items.errors[:base]).to eq [
+        'Cannot delete record because dependent line items exist'
+      ]
     end
   end
 end
