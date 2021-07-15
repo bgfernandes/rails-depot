@@ -19,6 +19,6 @@ FactoryBot.define do
   factory :line_item do
     product
     cart
-    product_price { 0 }
+    product_price { 0.to_d }
   end
 end
