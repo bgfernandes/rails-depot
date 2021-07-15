@@ -10,7 +10,6 @@ RSpec.describe 'line_items/new', type: :view do
   it 'renders new line_item form' do
     render
 
-    assert_select 'form[action=?][method=?]', line_items_path, 'post' do
-    end
+    assert_select 'form[action=?][method=?]', line_items_path, 'post'
   end
 end

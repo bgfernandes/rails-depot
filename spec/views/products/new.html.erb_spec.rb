@@ -10,7 +10,6 @@ RSpec.describe 'products/new', type: :view do
   it 'renders new product form' do
     render
 
-    assert_select 'form[action=?][method=?]', products_path, 'post' do
-    end
+    assert_select 'form[action=?][method=?]', products_path, 'post'
   end
 end

@@ -16,6 +16,7 @@ FactoryBot.define do
   end
 
   factory :cart do
+    # Cart has no attributes as of yet
   end
 
   factory :line_item do

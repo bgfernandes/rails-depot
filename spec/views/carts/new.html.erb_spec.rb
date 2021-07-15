@@ -10,7 +10,6 @@ RSpec.describe 'carts/new', type: :view do
   it 'renders new cart form' do
     render
 
-    assert_select 'form[action=?][method=?]', carts_path, 'post' do
-    end
+    assert_select 'form[action=?][method=?]', carts_path, 'post'
   end
 end
