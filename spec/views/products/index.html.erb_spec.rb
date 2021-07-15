@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "products/index", type: :view do
-  before(:each) do
+RSpec.describe 'products/index', type: :view do
+  before do
     assign(:products, [
-      create(:product),
-      create(:product)
-    ])
+             create(:product),
+             create(:product)
+           ])
   end
 
-  it "renders a list of products" do
+  it 'renders a list of products' do
     render
   end
 end
