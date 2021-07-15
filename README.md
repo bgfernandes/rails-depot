@@ -18,3 +18,6 @@ Run `bin/rails server` to start the server in development mode.
 
 ## Running the tests
 Run `bin/rails spec` to run the tests.
+
+## Running lint
+Lint by running `bundle exec rubocop`.

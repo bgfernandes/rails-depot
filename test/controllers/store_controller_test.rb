@@ -1,7 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class StoreControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
+  test 'should get index' do
     product = create(:product)
     create(:product)
     create(:product)

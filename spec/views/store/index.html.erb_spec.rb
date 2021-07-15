@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "store/index", type: :view do
+RSpec.describe 'store/index', type: :view do
   let!(:a_product_in_store) { create(:product) }
 
-  before(:each) do
+  before do
     assign(:products, [
-      create(:product),
-      create(:product),
-      a_product_in_store
-    ])
+             create(:product),
+             create(:product),
+             a_product_in_store
+           ])
   end
 
-  it "renders a list of products" do
+  it 'renders a list of products' do
     render
 
     assert_select 'h1', 'Catalog'

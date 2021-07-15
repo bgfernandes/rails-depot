@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # REMOVING THIS FOR NOW - So it won't clash with the factories in spec/factories.rb
 
 # FactoryBot.define do

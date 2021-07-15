@@ -57,3 +57,7 @@ jobs:
           DATABASE_URL: postgres://postgres:password@127.0.0.1/rails_depot_test
         run:
           bin/rails spec
+
+      - name: Run Lint
+        run:
+          bundle exec rubocop

@@ -1,0 +1,13 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+RSpec/NestedGroups:
+  Max: 4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
