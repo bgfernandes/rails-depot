@@ -15,3 +15,6 @@ Tutorial application following the Agile Web Development with Rails 6 book.
 
 ## Running in development
 Run `bin/rails server` to start the server in development mode.
+
+## Running the tests
+Run `bin/rails spec` to run the tests.

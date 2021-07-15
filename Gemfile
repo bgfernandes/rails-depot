@@ -34,6 +34,9 @@ group :development, :test do
 
   # Test factories to use instead of fixtures
   gem 'factory_bot_rails'
+
+  # RSpec testing framework
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
