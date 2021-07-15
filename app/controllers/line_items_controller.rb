@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The Line Items Controller
 class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: :create

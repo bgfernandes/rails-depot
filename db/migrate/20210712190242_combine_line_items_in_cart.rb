@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# This migration will comb the database for duplicate line_items of the same product & cart
+# and merge them together, by making use of the quantity field
 class CombineLineItemsInCart < ActiveRecord::Migration[6.1]
   def up
     # Combines line_items in the same cart and same product into a single line_item

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# A Product to be sold in the store
 class Product < ApplicationRecord
   has_many :line_items
 

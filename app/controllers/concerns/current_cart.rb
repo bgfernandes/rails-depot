@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Functions for loading @cart from the session[:cart_id] state
 module CurrentCart
   private
 

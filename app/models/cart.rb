@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Represents a user store cart
 class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
 
