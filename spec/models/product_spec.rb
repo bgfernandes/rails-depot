@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  describe 'validations' do
+  describe 'validations', :aggregate_failures do
     context 'when attributes are empty' do
       subject(:new_product) { described_class.new }
 

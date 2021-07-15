@@ -121,7 +121,7 @@ RSpec.describe '/carts', type: :request do
       end
     end
 
-    context "With a cart that is not in the user's session" do
+    context "with a cart that is not in the user's session" do
       it 'fails to destroys the requested cart' do
         cart = Cart.create! valid_attributes
         expect do
