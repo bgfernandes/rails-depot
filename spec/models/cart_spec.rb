@@ -8,7 +8,10 @@ RSpec.describe Cart, type: :model do
     let(:product) { create(:product) }
     let(:line_item) { cart.add_product(product) }
 
-    let(:updated_product) { product.price = 99; product }
+    let(:updated_product) do
+      product.price = 99
+      product
+    end
     let(:updated_line_item) { line_item.cart.add_product(updated_product) }
 
     it 'sets the product_price in line_item when adding a new product' do
