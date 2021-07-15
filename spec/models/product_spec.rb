@@ -5,75 +5,75 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   describe 'validations' do
     context 'when attributes are empty' do
-      subject { described_class.new }
+      subject(:new_product) { described_class.new }
 
       it 'has errors' do
-        expect(subject.valid?).to be false
-        expect(subject.errors[:title].any?).to be true
-        expect(subject.errors[:description].any?).to be true
-        expect(subject.errors[:price].any?).to be true
-        expect(subject.errors[:image_url].any?).to be true
+        expect(new_product.valid?).to be false
+        expect(new_product.errors[:title].any?).to be true
+        expect(new_product.errors[:description].any?).to be true
+        expect(new_product.errors[:price].any?).to be true
+        expect(new_product.errors[:image_url].any?).to be true
       end
     end
 
     describe 'title' do
       context 'when not unique' do
-        subject { build(:product, title: 'Same Title') }
+        subject(:product_with_existing_title) { build(:product, title: 'Same Title') }
 
         before do
           create(:product, title: 'Same Title')
         end
 
         it 'has an error' do
-          expect(subject.invalid?).to be true
-          expect(subject.errors[:title]).to eq ['has already been taken']
+          expect(product_with_existing_title.invalid?).to be true
+          expect(product_with_existing_title.errors[:title]).to eq ['has already been taken']
         end
       end
 
       context 'when smaller than 10 characters' do
-        subject { build(:product, title: 'too small') }
+        subject(:product_with_short_title) { build(:product, title: 'too small') }
 
         it 'has an error' do
-          expect(subject.invalid?).to be true
-          expect(subject.errors[:title]).to eq ['is too short (minimum is 10 characters)']
+          expect(product_with_short_title.invalid?).to be true
+          expect(product_with_short_title.errors[:title]).to eq ['is too short (minimum is 10 characters)']
         end
       end
 
       context 'when bigger than 9 characters and unique' do
-        subject { build(:product, title: 'A bigger and unique title') }
+        subject(:product_with_good_title) { build(:product, title: 'A bigger and unique title') }
 
         it 'has no errors' do
-          expect(subject.valid?).to be true
-          expect(subject.errors[:title].empty?).to be true
+          expect(product_with_good_title.valid?).to be true
+          expect(product_with_good_title.errors[:title].empty?).to be true
         end
       end
     end
 
     describe 'price' do
       context 'when negative' do
-        subject { build(:product, price: -1) }
+        subject(:product_with_negative_price) { build(:product, price: -1) }
 
         it 'has an error' do
-          expect(subject.invalid?).to be true
-          expect(subject.errors[:price]).to eq ['must be greater than or equal to 0.01']
+          expect(product_with_negative_price.invalid?).to be true
+          expect(product_with_negative_price.errors[:price]).to eq ['must be greater than or equal to 0.01']
         end
       end
 
       context 'when zero' do
-        subject { build(:product, price: 0) }
+        subject(:product_with_zero_price) { build(:product, price: 0) }
 
         it 'has an error' do
-          expect(subject.invalid?).to be true
-          expect(subject.errors[:price]).to eq ['must be greater than or equal to 0.01']
+          expect(product_with_zero_price.invalid?).to be true
+          expect(product_with_zero_price.errors[:price]).to eq ['must be greater than or equal to 0.01']
         end
       end
 
       context 'when 0.01' do
-        subject { build(:product, price: 0.01) }
+        subject(:product_with_good_price) { build(:product, price: 0.01) }
 
         it 'has no errors' do
-          expect(subject.valid?).to be true
-          expect(subject.errors[:price].empty?).to be true
+          expect(product_with_good_price.valid?).to be true
+          expect(product_with_good_price.errors[:price].empty?).to be true
         end
       end
     end
