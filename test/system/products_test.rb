@@ -3,7 +3,7 @@
 require 'application_system_test_case'
 
 class ProductsTest < ApplicationSystemTestCase
-  setup do
+  before do
     @product = create(:product)
   end
 

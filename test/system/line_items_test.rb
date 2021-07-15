@@ -3,7 +3,7 @@
 require 'application_system_test_case'
 
 class LineItemsTest < ApplicationSystemTestCase
-  setup do
+  before do
     @line_item = create(:line_item)
   end
 

@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class CartsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  before do
     @cart = create(:cart)
   end
 

@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  before do
     @product = create(:product)
     @title = "Some product title #{rand(1000)}"
   end

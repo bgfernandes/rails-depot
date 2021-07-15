@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class LineItemsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  before do
     @line_item = create(:line_item)
   end
 
