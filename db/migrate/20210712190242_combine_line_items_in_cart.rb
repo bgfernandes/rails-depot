@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CombineLineItemsInCart < ActiveRecord::Migration[6.1]
   def up
     # Combines line_items in the same cart and same product into a single line_item

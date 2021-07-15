@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FillPriceForLineItems < ActiveRecord::Migration[6.1]
   def up
     LineItem.all.each do |line_item|

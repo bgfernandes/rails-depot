@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   describe 'validations' do
     context 'when attributes are empty' do
-      subject { Product.new }
+      subject { described_class.new }
 
       it 'has errors' do
         expect(subject.valid?).to be false
