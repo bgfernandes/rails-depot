@@ -37,6 +37,9 @@ group :development, :test do
 
   # RSpec testing framework
   gem 'rspec-rails', '~> 5.0.0'
+
+  # Rubocop Linter
+  gem 'rubocop', '~> 1.18', require: false
 end
 
 group :development do
