@@ -40,6 +40,8 @@ group :development, :test do
 
   # Rubocop Linter
   gem 'rubocop', '~> 1.18', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
