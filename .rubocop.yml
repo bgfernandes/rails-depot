@@ -4,3 +4,7 @@ require:
 
 RSpec/NestedGroups:
   MaxNesting: 4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
