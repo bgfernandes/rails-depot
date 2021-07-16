@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
-  describe '.add_product' do
+  describe '#add_product' do
     let(:cart) { create(:cart) }
     let(:product) { create(:product) }
     let(:line_item) { cart.add_product(product) }
