@@ -59,9 +59,9 @@ RSpec.describe '/line_items', type: :request do
           end.to change(LineItem, :count).by(1)
         end
 
-        it 'redirects to the cart containing the line item' do
+        it 'redirects to the store front' do
           post line_items_url, params: valid_creation_params
-          expect(response).to redirect_to(cart_url(LineItem.last.cart))
+          expect(response).to redirect_to(store_index_url)
         end
       end
 
