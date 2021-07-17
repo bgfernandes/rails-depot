@@ -1,28 +1,15 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build&test"
   build_test:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Setup PostgreSQL
@@ -34,7 +21,7 @@ jobs:
       - name: Setup Ruby, JRuby and TruffleRuby
         uses: ruby/setup-ruby@v1.75.0
         with:
-          bundler-cache: true # optional, default is false
+          bundler-cache: true
           # Arbitrary string that will be added to the cache key of the bundler cache. Set or change it if you need to invalidate the cache.
           #cache-version: # optional, default is 0
 
@@ -59,5 +46,6 @@ jobs:
           bin/rails spec
 
       - name: Run Lint
-        run:
+        run: |
           bundle exec rubocop
+          bundle exec erblint --lint-all
