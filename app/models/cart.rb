@@ -5,6 +5,8 @@ class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
 
   def add_product(product)
+    product = Product.find(product) unless product.instance_of?(Product)
+
     current_item = line_items.find_by(product_id: product.id)
     if current_item
       current_item.quantity += 1
