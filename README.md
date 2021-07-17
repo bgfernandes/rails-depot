@@ -19,4 +19,6 @@ Run `bin/rails server` to start the server in development mode.
 Run `bin/rails spec` to run the tests.
 
 ## Running lint
-Lint by running `bundle exec rubocop`.
+Lint ruby code by running `bundle exec rubocop`.
+
+Lint the ERB templates by running `bundle exec erblint --lint-all`
