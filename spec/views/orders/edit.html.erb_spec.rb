@@ -1,27 +1,43 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "orders/edit", type: :view do
-  before(:each) do
-    @order = assign(:order, Order.create!(
-      name: "MyString",
-      address: "MyText",
-      email: "MyString",
-      pay_type: 1
-    ))
+RSpec.describe 'orders/edit', type: :view do
+  let(:order) { create(:order) }
+
+  before do
+    @order = assign(:order, order)
   end
 
-  it "renders the edit order form" do
+  it 'renders the name input' do
     render
 
-    assert_select "form[action=?][method=?]", order_path(@order), "post" do
+    assert_select 'form[action=?][method=?]', order_path(order), 'post' do
+      assert_select 'input[name=?]', 'order[name]'
+    end
+  end
 
-      assert_select "input[name=?]", "order[name]"
+  it 'renders the address input' do
+    render
 
-      assert_select "textarea[name=?]", "order[address]"
+    assert_select 'form[action=?][method=?]', order_path(order), 'post' do
+      assert_select 'textarea[name=?]', 'order[address]'
+    end
+  end
 
-      assert_select "input[name=?]", "order[email]"
+  it 'renders the email input' do
+    render
 
-      assert_select "input[name=?]", "order[pay_type]"
+    assert_select 'form[action=?][method=?]', order_path(order), 'post' do
+      assert_select 'input[name=?]', 'order[email]'
+    end
+  end
+
+  it 'renders the pay type input' do
+    render
+
+    assert_select 'form[action=?][method=?]', order_path(order), 'post' do
+      assert_select 'input[name=?]', 'order[pay_type]'
     end
   end
 end
