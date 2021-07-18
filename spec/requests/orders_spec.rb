@@ -18,7 +18,7 @@ RSpec.describe '/orders', type: :request do
   # Order. As you add validations to Order, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    attributes_for(:order)
   end
 
   let(:invalid_attributes) do
@@ -42,9 +42,27 @@ RSpec.describe '/orders', type: :request do
   end
 
   describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_order_url
-      expect(response).to be_successful
+    context 'when cart is empty' do
+      it 'redirects to store front' do
+        get new_order_url
+        expect(response).to redirect_to(store_index_path)
+      end
+
+      it 'sets a notice message' do
+        get new_order_url
+        expect(flash[:notice]).to eq 'Your cart is empty.'
+      end
+    end
+
+    context 'when cart has items' do
+      before do
+        post line_items_url, params: { product_id: create(:product).id }
+      end
+
+      it 'renders a successful response' do
+        get new_order_url
+        expect(response).to be_successful
+      end
     end
   end
 
@@ -57,7 +75,23 @@ RSpec.describe '/orders', type: :request do
   end
 
   describe 'POST /create' do
+    context 'when cart is empty' do
+      it 'redirects to store front' do
+        post orders_url, params: { order: valid_attributes }
+        expect(response).to redirect_to(store_index_path)
+      end
+
+      it 'sets a notice message' do
+        post orders_url, params: { order: valid_attributes }
+        expect(flash[:notice]).to eq 'Your cart is empty.'
+      end
+    end
+
     context 'with valid parameters' do
+      before do
+        post line_items_url, params: { product_id: create(:product).id }
+      end
+
       it 'creates a new Order' do
         expect do
           post orders_url, params: { order: valid_attributes }

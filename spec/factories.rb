@@ -5,7 +5,7 @@ FactoryBot.define do
     name { 'A name' }
     address { 'An address' }
     email { 'an@email.com' }
-    pay_type { 1 }
+    pay_type { 'Credit cart' }
   end
 
   factory :product do
