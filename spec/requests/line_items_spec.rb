@@ -81,6 +81,16 @@ RSpec.describe '/line_items', type: :request do
           expect(LineItem.last.quantity).to be 2
         end
       end
+
+      context 'when adding to cart via ajax' do
+        before do
+          post line_items_url, params: valid_creation_params, xhr: true
+        end
+
+        it 'highlights the added item' do
+          expect(@response.body).to match(/<tr class=\\'line_item_highlight/) # rubocop:disable RSpec/InstanceVariable
+        end
+      end
     end
 
     context 'with invalid parameters' do
