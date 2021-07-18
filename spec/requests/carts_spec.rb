@@ -119,6 +119,19 @@ RSpec.describe '/carts', type: :request do
         delete cart_url(cart)
         expect(response).to redirect_to(store_index_url)
       end
+
+      context 'when calling with ajad' do
+        it 'destroys the requested cart' do
+          expect do
+            delete cart_url(cart), xhr: true
+          end.to change(Cart, :count).by(-1)
+        end
+
+        it 'removes the cart from the UI' do
+          delete cart_url(cart), xhr: true
+          expect(response.body).to match(/cart.innerHTML = ''/)
+        end
+      end
     end
 
     context "with a cart that is not in the user's session" do
