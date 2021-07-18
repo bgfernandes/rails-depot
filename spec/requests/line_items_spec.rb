@@ -88,7 +88,7 @@ RSpec.describe '/line_items', type: :request do
         end
 
         it 'highlights the added item' do
-          expect(@response.body).to match(/<tr class=\\'line_item_highlight/) # rubocop:disable RSpec/InstanceVariable
+          expect(response.body).to match(/<tr class=\\'line_item_highlight/)
         end
       end
     end
