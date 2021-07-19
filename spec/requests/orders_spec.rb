@@ -88,6 +88,8 @@ RSpec.describe '/orders', type: :request do
     end
 
     context 'with valid parameters' do
+      let(:recently_created_order) { Order.last }
+
       before do
         post line_items_url, params: { product_id: create(:product).id }
       end
@@ -101,6 +103,11 @@ RSpec.describe '/orders', type: :request do
       it 'redirects to the created order' do
         post orders_url, params: { order: valid_attributes }
         expect(response).to redirect_to(store_index_url)
+      end
+
+      it 'copies over the line_items to the order' do
+        post orders_url, params: { order: valid_attributes }
+        expect(recently_created_order.line_items.any?).to be true
       end
     end
 
