@@ -10,4 +10,11 @@ module CurrentCart
     @cart = Cart.create
     session[:cart_id] = @cart.id
   end
+
+  def clear_cart
+    return unless @cart
+
+    @cart.destroy
+    session[:cart_id] = nil
+  end
 end
