@@ -28,4 +28,18 @@ RSpec.describe Order, type: :model do
       end
     end
   end
+
+  describe '#add_line_items_from_cart' do
+    subject(:order_with_line_item) do
+      order.add_line_items_from_cart(cart)
+      order
+    end
+
+    let(:cart) { create(:line_item).cart }
+    let(:order) { build(:order) }
+
+    it 'adds line_items from the cart to the order' do
+      expect(order_with_line_item.line_items.any?).to be true
+    end
+  end
 end
