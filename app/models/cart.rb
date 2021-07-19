@@ -2,7 +2,7 @@
 
 # Represents a user store cart
 class Cart < ApplicationRecord
-  has_many :line_items, dependent: :destroy
+  has_many :line_items, dependent: :nullify
 
   def add_product(product)
     product = Product.find(product) unless product.instance_of?(Product)
