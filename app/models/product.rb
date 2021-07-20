@@ -3,6 +3,7 @@
 # A Product to be sold in the store
 class Product < ApplicationRecord
   has_many :line_items, dependent: :restrict_with_error
+  has_many :orders, through: :line_items
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
