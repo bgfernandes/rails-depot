@@ -33,11 +33,9 @@ RSpec.describe 'orders/edit', type: :view do
     end
   end
 
-  it 'renders the pay type input' do
+  it 'renders the pay type component container' do
     render
 
-    assert_select 'form[action=?][method=?]', order_path(order), 'post' do
-      assert_select 'select[name=?]', 'order[pay_type]'
-    end
+    assert_select 'div#pay-type-component'
   end
 end

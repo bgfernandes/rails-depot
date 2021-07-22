@@ -79,4 +79,18 @@ class OrdersController < ApplicationController
   def ensure_cart_isnt_empty
     redirect_to store_index_url, notice: 'Your cart is empty.' if @cart.line_items.empty?
   end
+
+  # Only allow pay type parameters according to the pay_type
+  def pay_type_params
+    case order_params[:pay_type]
+    when 'Credit cart'
+      params.require(:order).permit(:credit_card_number, :expiration_date)
+    when 'Check'
+      params.require(:order).permit(:routing_number, :account_number)
+    when 'Purchase Order'
+      params.require(:order).permit(:po_number)
+    else
+      {}
+    end
+  end
 end
