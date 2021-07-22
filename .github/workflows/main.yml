@@ -28,6 +28,9 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.5
 
+      - name: setup-chromedriver
+        uses: nanasess/setup-chromedriver@v1.0.1
+
       - name: Setup DB
         env:
           DATABASE_URL: postgres://postgres:password@127.0.0.1/rails_depot_test
