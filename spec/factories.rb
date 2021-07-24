@@ -6,6 +6,13 @@ FactoryBot.define do
     address { 'An address' }
     email { 'an@email.com' }
     pay_type { 'Credit cart' }
+
+    after(:create) do |order|
+      create_list(:line_item, 2, order: order, cart: nil)
+
+      # You may need to reload the record here, depending on your application
+      order.reload
+    end
   end
 
   factory :product do
