@@ -2,6 +2,8 @@
 
 # Mailer for sending order received and order shipped emails
 class OrderMailer < ApplicationMailer
+  default from: Rails.application.credentials.email_settings[:email_from]
+
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #

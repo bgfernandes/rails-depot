@@ -9,7 +9,7 @@ RSpec.describe OrderMailer, :aggregate_failures, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('Received')
       expect(mail.to).to eq(['to@example.org'])
-      expect(mail.from).to eq(['from@example.com'])
+      expect(mail.from).to eq([Rails.application.credentials.email_settings[:email_from_address]])
     end
 
     it 'renders the body' do
@@ -23,7 +23,7 @@ RSpec.describe OrderMailer, :aggregate_failures, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq('Shipped')
       expect(mail.to).to eq(['to@example.org'])
-      expect(mail.from).to eq(['from@example.com'])
+      expect(mail.from).to eq([Rails.application.credentials.email_settings[:email_from_address]])
     end
 
     it 'renders the body' do
