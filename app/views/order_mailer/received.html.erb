@@ -1,5 +1,25 @@
-<h1>Order#received</h1>
+<h3>Cookie Store Order Received</h3>
 
 <p>
-  <%= @greeting %>, find me in app/views/order_mailer/received.html.erb
+  Dear <%= @order.name %>
+</p>
+
+<p>
+  This is just to let you know that we've shipped your recent order:
+</p>
+
+<p>
+  You ordered the following items:
+</p>
+
+<table>
+  <tr>
+    <th> Qty </th>
+    <th colspan="2"> Description </th>
+  </tr>
+  <%= render @order.line_items %>
+</table>
+
+<p>
+  We'll send you a separate email when your order ships.
 </p>
