@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         clear_cart
+        send_order_confirmed_email
         format.html { redirect_to store_index_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -92,5 +93,10 @@ class OrdersController < ApplicationController
     else
       {}
     end
+  end
+
+  # Send order confirmation email
+  def send_order_confirmed_email
+    OrderMailer.received(@order).deliver_later
   end
 end

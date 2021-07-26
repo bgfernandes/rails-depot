@@ -21,5 +21,9 @@ module RailsDepot
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    if Rails.application.credentials.email_settings && Rails.application.credentials.email_settings[:smtp_settings]
+      config.action_mailer.smtp_settings = Rails.application.credentials.email_settings[:smtp_settings]
+    end
   end
 end
