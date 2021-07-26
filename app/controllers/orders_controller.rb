@@ -84,7 +84,7 @@ class OrdersController < ApplicationController
   # Only allow pay type parameters according to the pay_type
   def pay_type_params
     case order_params[:pay_type]
-    when 'Credit cart'
+    when 'Credit card'
       params.require(:order).permit(:credit_card_number, :expiration_date)
     when 'Check'
       params.require(:order).permit(:routing_number, :account_number)

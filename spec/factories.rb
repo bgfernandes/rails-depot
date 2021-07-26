@@ -5,7 +5,7 @@ FactoryBot.define do
     name { 'A name' }
     address { 'An address' }
     email { 'an@email.com' }
-    pay_type { 'Credit cart' }
+    pay_type { 'Credit card' }
 
     after(:create) do |order|
       create_list(:line_item, 2, order: order, cart: nil)
