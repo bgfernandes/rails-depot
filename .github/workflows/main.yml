@@ -19,7 +19,7 @@ jobs:
           postgresql password: password
 
       - name: Setup Ruby, JRuby and TruffleRuby
-        uses: ruby/setup-ruby@v1.75.0
+        uses: ruby/setup-ruby@v1.80.0
         with:
           bundler-cache: true
           # Arbitrary string that will be added to the cache key of the bundler cache. Set or change it if you need to invalidate the cache.

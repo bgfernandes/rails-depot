@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         clear_cart
-        send_order_confirmed_email
+        enqueue_charge_order_job
         format.html { redirect_to store_index_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -95,8 +95,8 @@ class OrdersController < ApplicationController
     end
   end
 
-  # Send order confirmation email
-  def send_order_confirmed_email
-    OrderMailer.received(@order).deliver_later
+  # Enqueues a charge order job
+  def enqueue_charge_order_job
+    ChargeOrderJob.perform_later(@order, pay_type_params.to_h)
   end
 end
