@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    password { "" }
+    name { 'MyString' }
+    password { '' }
   end
 
   factory :order do
