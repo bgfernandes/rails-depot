@@ -2,8 +2,13 @@
 
 FactoryBot.define do
   factory :user do
-    name { 'A username' }
+    sequence(:name) { |n| "Username ##{n}" }
     password { 'My Password' }
+
+    factory :another_user do
+      name { 'Another username' }
+      password { 'Another password' }
+    end
   end
 
   factory :order do

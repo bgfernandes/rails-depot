@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_08_08_023608) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "line_items", "carts"
