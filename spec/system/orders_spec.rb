@@ -12,6 +12,7 @@ RSpec.describe 'Orders', :aggregate_failures, type: :system do
   context 'when there is already an existing order' do
     before do
       create(:order)
+      setup_authentication
     end
 
     it 'renders the index page' do

@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe '/carts', type: :request do
+  before do
+    setup_authentication
+  end
+
   # Cart. As you add validations to Cart, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do

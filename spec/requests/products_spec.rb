@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe '/products', type: :request do
+  before do
+    setup_authentication
+  end
+
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do

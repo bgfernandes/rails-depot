@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe '/line_items', type: :request do
+  before do
+    setup_authentication
+  end
+
   let(:valid_attributes) do
     attributes_for(:line_item, cart_id: create(:cart).id, product_id: create(:product).id)
   end
