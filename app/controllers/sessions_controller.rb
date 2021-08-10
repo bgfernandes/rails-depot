@@ -2,6 +2,8 @@
 
 # This controller handles login and session management
 class SessionsController < ApplicationController
+  skip_before_action :authorize
+
   def new; end
 
   def create

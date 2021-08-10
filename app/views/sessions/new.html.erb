@@ -3,6 +3,10 @@
     <aside class="notice"><%= flash[:alert] %></aside>
   <% end %>
 
+  <% if notice %>
+    <aside id="notice"><%= notice %></aside>
+  <% end %>
+
   <%= form_tag do %>
     <h2>Please Log In</h2>
 
