@@ -6,6 +6,7 @@ RSpec.describe 'Products', type: :system do
   before do
     driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
     create(:product)
+    setup_authentication
   end
 
   let(:another_product) { build(:another_product) }
