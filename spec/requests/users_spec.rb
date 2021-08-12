@@ -132,5 +132,12 @@ RSpec.describe '/users', type: :request do
       delete user_url(user)
       expect(response).to redirect_to(users_url)
     end
+
+    it 'does not allow the last user to be destroyed' do
+      user = User.first
+      expect do
+        delete user_url(user)
+      end.to change(User, :count).by(0)
+    end
   end
 end
