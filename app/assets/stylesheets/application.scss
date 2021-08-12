@@ -86,6 +86,12 @@ header.main {
         }
       }
     }
+
+    &.logged_in_nav {
+      border-top: solid thin #bfb;
+      padding: 0.354em 0;
+      margin-top: 0.354em;
+    }
   }
 
   main {
